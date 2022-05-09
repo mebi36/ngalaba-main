@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{%  block title  %}{{  post.post_title  }}: Ngalaba{%  endblock  %}
+
+{% block body_block %}
+    <h1>{{  post.post_title  }}</h1>
+
+    {%  if post.post_section_set.all %}
+        {% for section in post.post_section_set.all %}
+            {% if section.heading  %}
+            <h3>{{  section.heading  }}</h3>
+            {% endif %}
+
+            {% if section.image %}
+            <img src="{{  section.image.url  }}" alt="{{  post.post_title  }}" height="100" width="100">
+            {%  endif  %}
+
+            {% if section.body %}
+            <p>{{  section.body|safe  }}</p>
+            {%  endif  %}
+
+        {% endfor%}
+
+    {% endif%}
+
+    <h6>By: <a href="{%  url 'blog:author-detail' post.author.pk  %}">{{  post.author  }}</a></h6>
+{% endblock %}

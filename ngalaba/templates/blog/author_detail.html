@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+
+{% block body_block %}
+    <h1>{{  author.author_avatar  }} Details</h1>
+    {% if error_message %} <p> <strong>{{  error_message  }}</strong></p>{%  endif  %}
+
+    <img src="{{  author.author_profile_picture.url  }}" alt="Profile Picture">
+{% endblock %}

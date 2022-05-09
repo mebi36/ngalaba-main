@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block body_block %}
+    <h1>Recent Updates</h1>
+    {% if latest_post_list %}
+    <ul>
+        {% for post in latest_post_list %}
+        <li><a href="{%  url 'blog:post-detail' post.pk  %}">{{  post.post_title  }}</a></li>
+        {% endfor %}
+    </ul>
+    {%  else  %}
+        <p>No blog posts are available.</p>
+    {%  endif  %}
+{% endblock %}
